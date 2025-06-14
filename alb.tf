@@ -20,8 +20,8 @@ resource "aws_lb" "main" {
   )
 }
 
-resource "aws_lb_listener" "sdk_http" {
-  load_balancer_arn = aws_lb.sdk_main.arn
+resource "aws_lb_listener" "http" {
+  load_balancer_arn = aws_lb.main.arn
   port              = 80
   protocol          = "HTTP"
 
@@ -35,8 +35,8 @@ resource "aws_lb_listener" "sdk_http" {
   }
 }
 
-resource "aws_lb_listener" "sdk_https" {
-  load_balancer_arn = aws_lb.sdk_main.arn
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_lb.main.arn
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
@@ -52,13 +52,13 @@ resource "aws_lb_listener" "sdk_https" {
   }
 }
 
-resource "aws_lb_listener_rule" "sdk_http_rule" {
-  listener_arn = aws_lb_listener.sdk_http.arn
+resource "aws_lb_listener_rule" "http_rule" {
+  listener_arn = aws_lb_listener.http.arn
   priority     = 1
 
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.sdk_main.arn
+    target_group_arn = aws_lb_target_group.main.arn
   }
 
   condition {
@@ -68,13 +68,13 @@ resource "aws_lb_listener_rule" "sdk_http_rule" {
   }
 }
 
-resource "aws_lb_listener_rule" "sdk_https_rule" {
-  listener_arn = aws_lb_listener.sdk_https.arn
+resource "aws_lb_listener_rule" "https_rule" {
+  listener_arn = aws_lb_listener.https.arn
   priority     = 1
 
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.sdk_main.arn
+    target_group_arn = aws_lb_target_group.main.arn
   }
 
   condition {

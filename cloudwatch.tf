@@ -1,4 +1,4 @@
-resource "aws_cloudwatch_metric_alarm" "asg_upscale" {
+resource "aws_cloudwatch_metric_alarm" "asg_cpu_upscale" {
   alarm_name          = format("%s-dynamic-upscale", local.stack_identifier)
   alarm_description   = "This metric alarm keeps a watch on CPU usage and triggers ASG upscale policy"
   comparison_operator = "GreaterThanOrEqualToThreshold"
@@ -14,12 +14,12 @@ resource "aws_cloudwatch_metric_alarm" "asg_upscale" {
   }
 
   alarm_actions = [
-    aws_autoscaling_policy.sdk_upscale.arn,
+    aws_autoscaling_policy.upscale.arn,
     aws_sns_topic.alert_topic.arn
   ]
 }
 
-resource "aws_cloudwatch_metric_alarm" "asg_downscale" {
+resource "aws_cloudwatch_metric_alarm" "asg_cpu_downscale" {
   alarm_name          = format("%s-dynamic-downscale", local.stack_identifier)
   alarm_description   = "This metric alarm keeps a watch on CPU usage and triggers ASG downscale policy"
   comparison_operator = "LessThanThreshold"
@@ -35,18 +35,18 @@ resource "aws_cloudwatch_metric_alarm" "asg_downscale" {
   }
 
   alarm_actions = [
-    aws_autoscaling_policy.sdk_downscale.arn
+    aws_autoscaling_policy.downscale.arn
   ]
 }
 
-resource "aws_cloudwatch_metric_alarm" "asg_memory" {
+resource "aws_cloudwatch_metric_alarm" "asg_memory_upscale" {
   alarm_name          = format("%s-asg-memory-warning", local.stack_identifier)
-  alarm_description   = "This metric alarm keeps a watch on memory utilization of asg and send Email Notification"
+  alarm_description   = "This metric alarm keeps a watch on Memory usage and triggers ASG upscale policy"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = 1
   metric_name         = "mem_used_percent"
   namespace           = "CWAgent"
-  period              = 10
+  period              = var.upscale_evaluation_period
   statistic           = "Maximum"
   threshold           = var.scaling_memory_threshold
 
@@ -55,8 +55,28 @@ resource "aws_cloudwatch_metric_alarm" "asg_memory" {
   }
 
   alarm_actions = [
-    aws_autoscaling_policy.sdk_upscale.arn,
+    aws_autoscaling_policy.upscale.arn,
     aws_sns_topic.alert_topic.arn
+  ]
+}
+
+resource "aws_cloudwatch_metric_alarm" "asg_memory_downscale" {
+  alarm_name          = format("%s-asg-memory-warning", local.stack_identifier)
+  alarm_description   = "This metric alarm keeps a watch on Memory usage and triggers ASG downscale policy"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  metric_name         = "mem_used_percent"
+  namespace           = "CWAgent"
+  period              = var.downscale_evaluation_period
+  statistic           = "Maximum"
+  threshold           = var.scaling_memory_threshold
+
+  dimensions = {
+    AutoScalingGroupName = aws_autoscaling_group.main.name
+  }
+
+  alarm_actions = [
+    aws_autoscaling_policy.downscale.arn
   ]
 }
 
