@@ -24,12 +24,6 @@ variable "region" {
   default     = "ap-south-1"
 }
 
-variable "hosted_zone_name" {
-  type        = string
-  description = "environment type"
-  default     = "credeau.com"
-}
-
 variable "certificate_domain_name" {
   type        = string
   description = "domain name of the acm certificate for https"
@@ -257,11 +251,6 @@ variable "external_security_groups" {
   type        = list(string)
   description = "list of external access security group ids"
   default     = []
-}
-
-variable "public_subnet_ids" {
-  type        = list(string)
-  description = "list of public subnet ids to use"
 }
 
 variable "waf_rate_limit" {
