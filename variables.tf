@@ -280,10 +280,10 @@ variable "waf_rate_limit" {
 # External Dependencies Variables
 # -----------------------------------------------
 
-variable "kafka_host_address" {
-  type        = string
-  description = "kafka host address (single or multiple comma separated hosts)"
-  default     = null
+variable "kafka_broker_hosts" {
+  type        = list(string)
+  description = "kafka broker hosts"
+  default     = []
 }
 
 variable "postgres_user_name" {
