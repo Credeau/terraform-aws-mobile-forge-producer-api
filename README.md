@@ -109,5 +109,9 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_alb_access_log_bucket"></a> [alb\_access\_log\_bucket](#output\_alb\_access\_log\_bucket) | ALB Access Log Bucket |
+| <a name="output_asg_name"></a> [asg\_name](#output\_asg\_name) | Auto Scaling Group Name |
+| <a name="output_lb_dns_name"></a> [lb\_dns\_name](#output\_lb\_dns\_name) | Load Balancer DNS Name |
 <!-- END_TF_DOCS -->
