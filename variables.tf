@@ -156,12 +156,6 @@ variable "scaling_cpu_threshold" {
   default     = 65
 }
 
-variable "scaling_cpu_target" {
-  type        = number
-  description = "scaling cpu target"
-  default     = 50
-}
-
 variable "scaling_memory_threshold" {
   type        = number
   description = "Memory utilization % threshold for scaling & alerting"

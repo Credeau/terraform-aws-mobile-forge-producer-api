@@ -25,6 +25,7 @@ No modules.
 | [aws_autoscaling_schedule.scheduled_downscale](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_schedule) | resource |
 | [aws_autoscaling_schedule.scheduled_upscale](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_schedule) | resource |
 | [aws_cloudwatch_log_group.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
+| [aws_cloudwatch_log_group.waf](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_metric_alarm.asg_disk](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_cloudwatch_metric_alarm.asg_downscale](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_cloudwatch_metric_alarm.asg_memory](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
@@ -50,6 +51,9 @@ No modules.
 | [aws_s3_bucket.access_logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_sns_topic.alert_topic](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
 | [aws_sns_topic_subscription.email_subscriptions](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_subscription) | resource |
+| [aws_wafv2_web_acl.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl) | resource |
+| [aws_wafv2_web_acl_association.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl_association) | resource |
+| [aws_wafv2_web_acl_logging_configuration.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl_logging_configuration) | resource |
 | [aws_acm_certificate.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/acm_certificate) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 
@@ -77,7 +81,7 @@ No modules.
 | <a name="input_hosted_zone_name"></a> [hosted\_zone\_name](#input\_hosted\_zone\_name) | environment type | `string` | `"credeau.com"` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Instances type to provision in ASG for producer | `string` | `"t2.micro"` | no |
 | <a name="input_internal_security_groups"></a> [internal\_security\_groups](#input\_internal\_security\_groups) | list of internal access security group ids | `list(string)` | `[]` | no |
-| <a name="input_kafka_host_address"></a> [kafka\_host\_address](#input\_kafka\_host\_address) | kafka host address (single or multiple comma separated hosts) | `string` | `null` | no |
+| <a name="input_kafka_broker_hosts"></a> [kafka\_broker\_hosts](#input\_kafka\_broker\_hosts) | kafka broker hosts | `list(string)` | `[]` | no |
 | <a name="input_key_name"></a> [key\_name](#input\_key\_name) | ssh access key name | `string` | n/a | yes |
 | <a name="input_logs_retention_period"></a> [logs\_retention\_period](#input\_logs\_retention\_period) | No of days to retain the logs | `number` | `7` | no |
 | <a name="input_mapped_port"></a> [mapped\_port](#input\_mapped\_port) | mapped port to expose the application | `number` | `8000` | no |
@@ -92,7 +96,6 @@ No modules.
 | <a name="input_public_subnet_ids"></a> [public\_subnet\_ids](#input\_public\_subnet\_ids) | list of public subnet ids to use | `list(string)` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | aws region to use | `string` | `"ap-south-1"` | no |
 | <a name="input_root_volume_size"></a> [root\_volume\_size](#input\_root\_volume\_size) | size of root volume in GiB | `number` | `20` | no |
-| <a name="input_scaling_cpu_target"></a> [scaling\_cpu\_target](#input\_scaling\_cpu\_target) | scaling cpu target | `number` | `50` | no |
 | <a name="input_scaling_cpu_threshold"></a> [scaling\_cpu\_threshold](#input\_scaling\_cpu\_threshold) | CPU utilization % threshold for scaling & alerting | `number` | `65` | no |
 | <a name="input_scaling_disk_threshold"></a> [scaling\_disk\_threshold](#input\_scaling\_disk\_threshold) | Disk utilization % threshold for scaling & alerting | `number` | `80` | no |
 | <a name="input_scaling_memory_threshold"></a> [scaling\_memory\_threshold](#input\_scaling\_memory\_threshold) | Memory utilization % threshold for scaling & alerting | `number` | `60` | no |
