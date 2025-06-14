@@ -79,7 +79,6 @@ No modules.
 | <a name="input_enable_scheduled_scaling"></a> [enable\_scheduled\_scaling](#input\_enable\_scheduled\_scaling) | enable scheduled scaling | `bool` | `false` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | environment type | `string` | `"dev"` | no |
 | <a name="input_external_security_groups"></a> [external\_security\_groups](#input\_external\_security\_groups) | list of external access security group ids | `list(string)` | `[]` | no |
-| <a name="input_hosted_zone_name"></a> [hosted\_zone\_name](#input\_hosted\_zone\_name) | environment type | `string` | `"credeau.com"` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Instances type to provision in ASG for producer | `string` | `"t2.micro"` | no |
 | <a name="input_internal_security_groups"></a> [internal\_security\_groups](#input\_internal\_security\_groups) | list of internal access security group ids | `list(string)` | `[]` | no |
 | <a name="input_kafka_broker_hosts"></a> [kafka\_broker\_hosts](#input\_kafka\_broker\_hosts) | kafka broker hosts | `list(string)` | `[]` | no |
