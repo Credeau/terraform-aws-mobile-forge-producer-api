@@ -1,7 +1,7 @@
 resource "aws_lb" "main" {
   name               = format("%s-alb", local.stack_identifier)
   internal           = false
-  idle_timeout       = 120
+  idle_timeout       = var.api_timeout
   load_balancer_type = "application"
   security_groups    = concat(var.external_security_groups, var.internal_security_groups)
   subnets            = var.public_subnet_ids
