@@ -1,10 +1,10 @@
 data "aws_ssm_parameter" "postgres_user_name" {
-  name = "DUMMY_POSTGRES_USER"
+  name            = "DUMMY_POSTGRES_USER"
   with_decryption = true
 }
 
 data "aws_ssm_parameter" "postgres_password" {
-  name = "DUMMY_POSTGRES_PASSWORD"
+  name            = "DUMMY_POSTGRES_PASSWORD"
   with_decryption = true
 }
 
@@ -66,4 +66,8 @@ module "producer_api" {
   postgres_host      = aws_db_instance.postgres.db_name
   postgres_port      = 5432
   postgres_db        = "api_insights_db"
+}
+
+output "producer_api" {
+  value = module.producer_api
 }
