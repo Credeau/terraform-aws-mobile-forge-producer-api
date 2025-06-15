@@ -132,8 +132,8 @@ resource "aws_iam_role_policy" "consumer_scale_policy" {
           "autoscaling:ExecutePolicy"
         ]
         Resource = [
-          aws_autoscaling_policy.events_consumer_upscale.arn,
-          aws_autoscaling_policy.events_consumer_downscale.arn,
+          aws_autoscaling_policy.upscale.arn,
+          aws_autoscaling_policy.downscale.arn,
         ]
       }
     ]
