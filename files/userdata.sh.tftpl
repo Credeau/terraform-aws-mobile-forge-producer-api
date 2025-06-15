@@ -13,7 +13,6 @@ docker run -d \
     -e DI_POSTGRES_HOST="${postgres_host}" \
     -e DI_POSTGRES_PORT="${postgres_port}" \
     -e DI_POSTGRES_DATABASE="${postgres_db}" \
-    -e DI_POSTGRES_SYNC_DATABASE="${postgres_sync_db}" \
     -e DI_KAFKA_BROKER_ENDPOINT="${kafka_broker}" \
     --restart always \
     --log-driver=awslogs \

@@ -298,9 +298,3 @@ variable "postgres_db" {
   description = "postgres main database"
   default     = null
 }
-
-variable "postgres_sync_db" {
-  type        = string
-  description = "postgres sync database"
-  default     = null
-}

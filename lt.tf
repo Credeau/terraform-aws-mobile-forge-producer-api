@@ -57,7 +57,6 @@ resource "aws_launch_template" "main" {
       postgres_host      = var.postgres_host
       postgres_port      = var.postgres_port
       postgres_db        = var.postgres_db
-      postgres_sync_db   = var.postgres_sync_db
       kafka_broker       = join(",", var.kafka_broker_hosts)
       log_group          = aws_cloudwatch_log_group.main.name
     }
