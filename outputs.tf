@@ -10,5 +10,5 @@ output "asg_name" {
 
 # ALB Access Log Bucket
 output "alb_access_log_bucket" {
-  value = aws_s3_bucket.access_logs.bucket
+  value = var.enable_alb_access_logs ? aws_s3_bucket.access_logs[0].bucket : null
 }
