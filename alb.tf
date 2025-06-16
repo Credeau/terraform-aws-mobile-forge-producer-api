@@ -6,9 +6,12 @@ resource "aws_lb" "main" {
   security_groups    = concat(var.external_security_groups, var.internal_security_groups)
   subnets            = var.public_subnet_ids
 
-  access_logs {
-    bucket  = aws_s3_bucket.access_logs.id
-    enabled = var.enable_alb_access_logs
+  dynamic "access_logs" {
+    for_each = var.enable_alb_access_logs ? [1] : []
+    content {
+      bucket  = aws_s3_bucket.access_logs[0].id
+      enabled = true
+    }
   }
 
   tags = merge(
