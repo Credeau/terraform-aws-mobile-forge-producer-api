@@ -16,4 +16,6 @@ locals {
     "/api/sync_call_logs",
     "/api/sync_web"
   ]
+
+  metric_namespace   = local.stack_identifier
 }
