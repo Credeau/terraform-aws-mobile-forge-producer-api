@@ -60,12 +60,12 @@ module "producer_api" {
   external_security_groups = ["sg-00000000000000000"]
   waf_rate_limit           = 100
 
-  kafka_broker_hosts = [format("%s:9092", module.kafka.host_address)]
-  postgres_user_name = data.aws_ssm_parameter.postgres_user_name.value
-  postgres_password  = data.aws_ssm_parameter.postgres_password.value
-  postgres_host      = aws_db_instance.postgres.db_name
-  postgres_port      = 5432
-  postgres_db        = "api_insights_db"
+  kafka_broker_hosts      = [format("%s:9092", module.kafka.host_address)]
+  postgres_user_name      = data.aws_ssm_parameter.postgres_user_name.value
+  postgres_password       = data.aws_ssm_parameter.postgres_password.value
+  postgres_host           = aws_db_instance.postgres.db_name
+  postgres_port           = 5432
+  postgres_db             = "api_insights_db"
   fast_featurization_host = "http://insights.credeau.com/api/async_fast_featurize"
 }
 

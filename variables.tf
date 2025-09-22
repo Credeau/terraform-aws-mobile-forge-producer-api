@@ -224,11 +224,11 @@ variable "enable_alb_access_logs" {
 
 variable "log_metric_filters" {
   type = list(object({
-    name = string
+    name           = string
     filter_pattern = string
   }))
   description = "list of log metric filters"
-  default     = [
+  default = [
     {
       name           = "kafka_log_errors"
       filter_pattern = "?FAIL ?KafkaError"
