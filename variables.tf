@@ -298,3 +298,9 @@ variable "postgres_db" {
   description = "postgres main database"
   default     = null
 }
+
+variable "fast_featurization_host" {
+  type        = string
+  description = "fast featurization host"
+  default     = null
+}

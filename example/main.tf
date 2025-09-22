@@ -9,7 +9,7 @@ data "aws_ssm_parameter" "postgres_password" {
 }
 
 module "producer_api" {
-  source = "git::https://github.com/credeau/terraform-aws-mobile-forge-producer-api.git?ref=v1.0.0"
+  source = "git::https://github.com/credeau/terraform-aws-mobile-forge-producer-api.git?ref=v1.1.0"
 
   application             = "di-producer-api"
   environment             = "prod"
@@ -66,6 +66,7 @@ module "producer_api" {
   postgres_host      = aws_db_instance.postgres.db_name
   postgres_port      = 5432
   postgres_db        = "api_insights_db"
+  fast_featurization_host = "http://insights.credeau.com/api/async_fast_featurize"
 }
 
 output "producer_api" {
