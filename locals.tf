@@ -9,13 +9,5 @@ locals {
 
   ecr_registry     = format("%s.dkr.ecr.%s.amazonaws.com", data.aws_caller_identity.current.account_id, var.region)
   stack_identifier = format("%s-%s", var.application, var.environment)
-  allowed_api_paths = [
-    "/api/sync_sms",
-    "/api/sync_device",
-    "/api/sync_contacts",
-    "/api/sync_call_logs",
-    "/api/sync_web"
-  ]
-
-  metric_namespace   = local.stack_identifier
+  metric_namespace = local.stack_identifier
 }
