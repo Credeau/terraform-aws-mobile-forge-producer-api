@@ -14,6 +14,7 @@ docker run -d \
     -e DI_POSTGRES_PORT="${postgres_port}" \
     -e DI_POSTGRES_DATABASE="${postgres_db}" \
     -e DI_KAFKA_BROKER_ENDPOINT="${kafka_broker}" \
+    -e FAST_FEATURIZATION_HOST="${fast_featurization_host}" \
     --restart always \
     --log-driver=awslogs \
     --log-opt awslogs-region="${region}" \

@@ -45,20 +45,21 @@ resource "aws_launch_template" "main" {
   user_data = base64encode(templatefile(
     "${path.module}/files/userdata.sh.tftpl",
     {
-      region             = var.region
-      registry           = local.ecr_registry
-      ecr_repository     = var.ecr_repository
-      image_tag          = var.ecr_image_tag
-      application        = var.application
-      mapped_port        = var.mapped_port
-      application_port   = var.application_port
-      postgres_user_name = var.postgres_user_name
-      postgres_password  = var.postgres_password
-      postgres_host      = var.postgres_host
-      postgres_port      = var.postgres_port
-      postgres_db        = var.postgres_db
-      kafka_broker       = join(",", var.kafka_broker_hosts)
-      log_group          = aws_cloudwatch_log_group.main.name
+      region                  = var.region
+      registry                = local.ecr_registry
+      ecr_repository          = var.ecr_repository
+      image_tag               = var.ecr_image_tag
+      application             = var.application
+      mapped_port             = var.mapped_port
+      application_port        = var.application_port
+      postgres_user_name      = var.postgres_user_name
+      postgres_password       = var.postgres_password
+      postgres_host           = var.postgres_host
+      postgres_port           = var.postgres_port
+      postgres_db             = var.postgres_db
+      kafka_broker            = join(",", var.kafka_broker_hosts)
+      fast_featurization_host = var.fast_featurization_host
+      log_group               = aws_cloudwatch_log_group.main.name
     }
   ))
 
