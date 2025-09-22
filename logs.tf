@@ -7,7 +7,7 @@ resource "aws_cloudwatch_log_group" "main" {
 resource "aws_cloudwatch_log_metric_filter" "producer_errors" {
   count = length(var.log_metric_filters)
 
-  name           = format("%s-logs-errors-%s", local.stack_identifier, var.log_metric_filters[count.index].name)
+  name           = format("%s-%s", local.stack_identifier, var.log_metric_filters[count.index].name)
   log_group_name = aws_cloudwatch_log_group.main.name
   pattern        = var.log_metric_filters[count.index].filter_pattern
 
